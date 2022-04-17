@@ -23,6 +23,8 @@ I AM PROPOSING TO UPDATE OUR CURRENT APPLICATION WITH A NEW LAYOUT AND SOME ADDI
 ----------------------------------
 
 BRAINSTORM & USER STORIES:
+![PROJECT 2 - BRAINSTORM_USER STORIES](https://user-images.githubusercontent.com/92687151/163695444-c0433749-9b2d-4031-824e-a4aaf3d06acf.jpg)
+
 
 ----------------------------------
 
