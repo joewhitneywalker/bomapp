@@ -33,8 +33,7 @@ WIREFRAME:
 ----------------------------------
 
 ERD:
-
-
+![PROJECT 2 - ERD ](https://user-images.githubusercontent.com/92687151/163695479-048fad4c-a84c-42c7-bb8c-36ba3a081eef.jpg)
 
 
 ---------------------------------
