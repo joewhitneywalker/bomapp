@@ -29,6 +29,7 @@ BRAINSTORM & USER STORIES:
 ----------------------------------
 
 WIREFRAME:
+[JW CAPSTONE PROJECT.pdf](https://github.com/joewhitneywalker/bomapp/files/8500818/JW.CAPSTONE.PROJECT.pdf)
 
 ----------------------------------
 
