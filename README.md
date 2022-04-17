@@ -38,7 +38,7 @@ ERD:
 
 
 ---------------------------------
-KEEP A LOOK OUT FOR UPDATES, THANKS!
+KEEP A LOOK OUT FOR UPDATES, THANK YOU FOR READING MY READ ME!
 
 
 
