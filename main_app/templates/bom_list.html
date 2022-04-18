@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bom List
+{% endblock %}
+
+
+{% block content %}
+<h1>BOMS</h1>
+    {% for bom in boms %}
+        <h3>Style Number: {{bom.style_number}}</h3>
+        <h3>Description: {{bom.description}}</h3>
+        <h3>Date Created: {{bom.created_at}}</h3>
+        <h3>Season: {{bom.season}}</h3>
+        <h3>Category: {{bom.category}}</h3>
+        <h3>Colorways: {{bom.colorways}}</h3>
+    {% endfor %}
+{% endblock %}
+
