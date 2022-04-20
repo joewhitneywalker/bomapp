@@ -19,5 +19,32 @@ class BomList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["boms"] = Bom.objects.all()
+        style_number = self.request.GET.get("style_number")
+        if style_number != None:
+            context["boms"] = Bom.objects.filter(style_number__icontains=style_number)
+            context["header"] = f"Searching for {style_number}"
+        else:
+            context["boms"] = Bom.objects.all()
+            context["header"] = "ALL BOMS"
         return context
+
+
+
+
+'''
+class CatList(TemplateView):
+    template_name = "catlist.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        if name != None:
+            context["cats"] = Cat.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
+        else:
+            context["cats"] = Cat.objects.all() 
+            context["header"] = "Our Cats"
+        return context
+
+
+'''
