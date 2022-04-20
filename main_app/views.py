@@ -1,15 +1,17 @@
+from dataclasses import fields
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Bom
+from django.views.generic.edit import CreateView
 
 
 
 
 # Create your views here.
 
-
+#HOME VIEW WHICH SHOWS USER'S RECENT FILES
 class Home(TemplateView):
     template_name = 'home.html'
 
@@ -21,7 +23,7 @@ class Home(TemplateView):
 
 
 
-
+#BOM LIST VIEW WITH SEARCH FEATURE
 class BomList(TemplateView):
     template_name ="bom_list.html"
 
@@ -37,4 +39,9 @@ class BomList(TemplateView):
         return context
 
 
-
+#BOM CREATE VIEW
+class Bom_Create(CreateView):
+    model = Bom
+    fields = '__all__'
+    template_name = "bom_create.html"
+    success_url = "/boms/"

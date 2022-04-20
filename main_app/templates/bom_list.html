@@ -14,6 +14,7 @@ Bom List
     </div>
     <!-- this a tag will redirect back to catlist without a query param! be sure to use the "name" you called the route in your main_app/urls.py -->
     <a href="{% url 'bom_list' %}">Clear Search</a>
+    <a href="{% url 'bom_create' %}">CREATE NEW BOM</a>
 </form>
 <h1>{{header}}</h1>
     {% for bom in boms %}
