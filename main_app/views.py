@@ -1,19 +1,29 @@
+from dataclasses import fields
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Bom
+from django.views.generic.edit import CreateView
 
 
 
 
 # Create your views here.
 
-
+#HOME VIEW WHICH SHOWS USER'S RECENT FILES
 class Home(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["boms"] = Bom.objects.all()
+        return context
 
+
+
+
+#BOM LIST VIEW WITH SEARCH FEATURE
 class BomList(TemplateView):
     template_name ="bom_list.html"
 
@@ -29,22 +39,9 @@ class BomList(TemplateView):
         return context
 
 
-
-
-'''
-class CatList(TemplateView):
-    template_name = "catlist.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
-        if name != None:
-            context["cats"] = Cat.objects.filter(name__icontains=name)
-            context["header"] = f"Searching for {name}"
-        else:
-            context["cats"] = Cat.objects.all() 
-            context["header"] = "Our Cats"
-        return context
-
-
-'''
+#BOM CREATE VIEW
+class Bom_Create(CreateView):
+    model = Bom
+    fields = '__all__'
+    template_name = "bom_create.html"
+    success_url = "/boms/"
