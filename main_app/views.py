@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from .models import Bom
 
 
 
@@ -13,25 +14,37 @@ class Home(TemplateView):
     template_name = 'home.html'
 
 
-class Bom:
-    def __init__(self, style_number, description, created_at, created_by, season, category, colorways,):
-        self.style_number = style_number
-        self.description = description
-        self.created_at = created_at
-        self.created_by = created_by
-        self.season = season
-        self.category = category
-        self.colorways = colorways
-
-boms = [
-    Bom("A0001", "PULL ON SHORT-COTTON NYLON RIPSTOP", "4/1722", "JOE WALKER", "SPRING", "BOTTOMS", "RED, BLUE, KHAKI" ),
-    Bom("A0002", "PULL ON SHORT-COTTON CANVAS", "4/1722", "JOE WALKER", "SPRING", "BOTTOMS", "WHITE, BLACK, OLIVE" )
-]
-
 class BomList(TemplateView):
     template_name ="bom_list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["boms"] = boms 
+        style_number = self.request.GET.get("style_number")
+        if style_number != None:
+            context["boms"] = Bom.objects.filter(style_number__icontains=style_number)
+            context["header"] = f"Searching for {style_number}"
+        else:
+            context["boms"] = Bom.objects.all()
+            context["header"] = "ALL BOMS"
         return context
+
+
+
+
+'''
+class CatList(TemplateView):
+    template_name = "catlist.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        if name != None:
+            context["cats"] = Cat.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
+        else:
+            context["cats"] = Cat.objects.all() 
+            context["header"] = "Our Cats"
+        return context
+
+
+'''
