@@ -13,6 +13,14 @@ from .models import Bom
 class Home(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["boms"] = Bom.objects.all()
+        return context
+
+
+
+
 
 class BomList(TemplateView):
     template_name ="bom_list.html"
@@ -30,21 +38,3 @@ class BomList(TemplateView):
 
 
 
-
-'''
-class CatList(TemplateView):
-    template_name = "catlist.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
-        if name != None:
-            context["cats"] = Cat.objects.filter(name__icontains=name)
-            context["header"] = f"Searching for {name}"
-        else:
-            context["cats"] = Cat.objects.all() 
-            context["header"] = "Our Cats"
-        return context
-
-
-'''
