@@ -6,6 +6,15 @@ Bom List
 
 
 {% block content %}
+<form>
+    <div>
+        <!-- searches for the name of the cat -->
+        <input type="text" name="name" placeholder="name"/>
+        <input type="submit" value="Search"/>
+    </div>
+    <!-- this a tag will redirect back to catlist without a query param! be sure to use the "name" you called the route in your main_app/urls.py -->
+    <a href="{% url 'bom_list' %}">Clear Search</a>
+</form>
 <h1>BOMS</h1>
     {% for bom in boms %}
         <h3>Style Number: {{bom.style_number}}</h3>
