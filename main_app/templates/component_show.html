@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>COMPONENT DETAILS</h1>
+
+<div>
+    <div>
+        <span>{{ component.name }}</span>
+        <p>NAME: {{ component.name }}</p>
+        <p>USAGE: {{ component.usage }}</p>
+        <p>COLOR {{ component.color }}</p>
+        <p>ARTICLE CODE: {{ component.article_code }}</p>
+        <p>QUANTITY: {{ component.quantity }}</p>
+        <p>SUPPLIER: {{ component.supplier }}</p>
+        <p>IMAGE: {{ component.img }}</p>
+        <p>COST: {{ component.cost }}</p>
+        <p>MATERIAL COMPOSITION: {{ component.material_composition }}</p>
+        <p>COMPONENT TYPE: {{ component.component_type }}</p>
+    </div>
+    <div>
+        <a href="{% url 'component_update' component.id %}">Edit</a>
+        <a href="{% url 'component_delete' component.id %}">Delete</a>
+    </div>
+</div>
+{% endblock %}

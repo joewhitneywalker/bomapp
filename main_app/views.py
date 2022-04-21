@@ -1,12 +1,14 @@
 from dataclasses import fields
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from .models import Bom
-from django.views.generic.edit import CreateView
+from .models import Bom, Component
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
-
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -45,11 +47,66 @@ class Bom_Create(CreateView):
     model = Bom
     fields = '__all__'
     template_name = "bom_create.html"
-    success_url = "/boms/"
+    def get_success_url(self):
+        return reverse('bom_detail', kwargs={'pk': self.object.pk}) 
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/boms') #update to be on boms detail page
 
 #BOM DETAIL VIEW - WILL BE A TABLE OF COMPONENTS 
 class Bom_Detail(DetailView):
     model =  Bom
     template_name = "bom_detail.html"
 
+#BOM UPDATE VIEW
+class Bom_Update(UpdateView):
+    model = Bom
+    fields = '__all__'
+    template_name = "bom_update.html"
+    def get_success_url(self):
+        return reverse('bom_detail', kwargs={'pk': self.object.pk}) 
 
+#BOM DELETE VIEW
+class Bom_Delete(DeleteView):
+    model = Bom
+    template_name = "bom_delete.html"
+    success_url = "/boms/"
+
+
+#USER FUNCION
+@login_required
+def profile(request, username):
+    user = User.objects.get(username=username)
+    boms = Bom.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'boms': boms})
+
+
+
+
+def components_index(request):
+    components = Component.objects.all()
+    return render(request, 'component_index.html', {'components': components})
+
+def components_show(request, component_id):
+    component = Component.objects.get(id=component_id)
+    return render(request, 'component_show.html', {'component': component}) 
+
+class Component_Create(CreateView):
+    model = Component
+    fields = '__all__'
+    template_name = "component_create.html"
+    success_url = '/components'
+
+class Component_Update(UpdateView):
+    model = Component
+    fields = '__all__'
+    template_name = "component_update.html"
+    success_url = '/components'
+
+class Component_Delete(DeleteView):
+    model = Component
+    template_name = "component_delete.html"
+    success_url = '/components'
