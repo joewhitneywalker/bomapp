@@ -19,4 +19,18 @@ class Meta:
         ordering = ['style_number']
 
 
-    
+class Component(models.Model):
+
+    name = models.CharField(max_length=50)
+    usage = models.CharField(max_length=200)
+    color = models.CharField(max_length=200)
+    article_code = models.CharField(max_length=50)
+    quantity = models.CharField(max_length=3)
+    supplier = models.CharField(max_length=50)
+    img = models.CharField(max_length=250)
+    cost = models.CharField(max_length=50)
+    material_compostition = models.CharField(max_length=200)
+    component_type = models.CharField(max_length=200, default='EX: BUTTON', editable=True) 
+
+def __str__(self):
+        return self.name
