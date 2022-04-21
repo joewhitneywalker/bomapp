@@ -18,7 +18,9 @@ Bom List
 </form>
 <h1>{{header}}</h1>
     {% for bom in boms %}
-        <h3>Style Number: {{bom.style_number}}</h3>
+        <a href="{% url 'bom_detail' bom.pk %}">
+            <h3>Style Number: {{bom.style_number}}</h3>
+        </a>
         <h3>Description: {{bom.style_name}}</h3>
         <h3>Date Created: {{bom.created_at}}</h3>
         <h3>Season: {{bom.season}}</h3>
