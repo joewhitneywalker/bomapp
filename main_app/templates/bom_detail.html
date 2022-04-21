@@ -12,8 +12,8 @@
     <h3></h3>
 </div>
 <div>
-    <a href="{% url 'bom_update' bom.pk %}">UPDATE ME</a>
-    <a href=""></a>
+    <a href="{% url 'bom_update' bom.pk %}">UPDATE</a>
+    <a href="{% url 'bom_delete' bom.pk %}">DELETE</a>
 </div>
 
 {% endblock %}

@@ -4,7 +4,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Bom
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 
@@ -60,3 +60,8 @@ class Bom_Update(UpdateView):
     template_name = "bom_update.html"
     def get_success_url(self):
         return reverse('bom_detail', kwargs={'pk': self.object.pk}) 
+
+class Bom_Delete(DeleteView):
+    model = Bom
+    template_name = "bom_delete.html"
+    success_url = "/boms/"
