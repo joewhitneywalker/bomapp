@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>LIST OF COMPONENTS</h1>
+
+{% for component in components %}
+    <div>
+        <a href="{% url 'components_show' component.id %}">
+            <div class="card-content">
+                <span>{{ component.name }}</span>
+                <p>TYPE: {{ component.component_type }}</p>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}

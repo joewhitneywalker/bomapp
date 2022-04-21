@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>BOMS CREATED BY {{ username }}: </h1>
+
+{% for bom in boms %}
+  <h3>{{ bom.style_name }}</h3>
+</a>
+
+{% endfor %}
+
+{% endblock %}
