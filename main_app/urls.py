@@ -6,4 +6,5 @@ urlpatterns = [
     path('boms/', views.BomList.as_view(), name="bom_list"),
     path('boms/new/', views.Bom_Create.as_view(), name="bom_create"),
     path('boms/<int:pk>/', views.Bom_Detail.as_view(), name="bom_detail"),
+    path('boms/<int:pk>/update', views.Bom_Update.as_view(), name="bom_update")
 ]

@@ -4,9 +4,9 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Bom
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
-
+from django.urls import reverse
 
 
 
@@ -45,7 +45,8 @@ class Bom_Create(CreateView):
     model = Bom
     fields = '__all__'
     template_name = "bom_create.html"
-    success_url = "/boms/"
+    def get_success_url(self):
+        return reverse('bom_detail', kwargs={'pk': self.object.pk}) 
 
 #BOM DETAIL VIEW - WILL BE A TABLE OF COMPONENTS 
 class Bom_Detail(DetailView):
@@ -53,3 +54,9 @@ class Bom_Detail(DetailView):
     template_name = "bom_detail.html"
 
 
+class Bom_Update(UpdateView):
+    model = Bom
+    fields = '__all__'
+    template_name = "bom_update.html"
+    def get_success_url(self):
+        return reverse('bom_detail', kwargs={'pk': self.object.pk}) 
