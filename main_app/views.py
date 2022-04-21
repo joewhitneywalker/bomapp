@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Bom
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 
 
 
@@ -45,3 +46,10 @@ class Bom_Create(CreateView):
     fields = '__all__'
     template_name = "bom_create.html"
     success_url = "/boms/"
+
+#BOM DETAIL VIEW - WILL BE A TABLE OF COMPONENTS 
+class Bom_Detail(DetailView):
+    model =  Bom
+    template_name = "bom_detail.html"
+
+
