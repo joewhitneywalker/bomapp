@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -31,6 +32,7 @@ class Bom(models.Model):
     colorway = models.CharField(max_length=25)
     img = models.CharField(max_length=250)
     component = models.ManyToManyField(Component)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 def __str__(self):
         return self.style_name
