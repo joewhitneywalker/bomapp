@@ -11,6 +11,12 @@
     <h3></h3>
     <h3></h3>
 </div>
+
+{% for component in bom.component_set.all %}
+    <div>{{component.name}}</div>
+{% empty %}
+    <div>THIS BOM IS MISSING COMPONENTS</div>
+{% endfor %}
 <div>
     <a href="{% url 'bom_update' bom.pk %}">UPDATE</a>
     <a href="{% url 'bom_delete' bom.pk %}">DELETE</a>

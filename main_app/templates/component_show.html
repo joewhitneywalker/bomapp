@@ -17,6 +17,15 @@
         <p>COST: {{ component.cost }}</p>
         <p>MATERIAL COMPOSITION: {{ component.material_composition }}</p>
         <p>COMPONENT TYPE: {{ component.component_type }}</p>
+        <p>BOMS WHERE THIS COMPONENT IS USED:</p>
+        {% for bom in component.bom_set.all %}
+             <p>{{bom.style_number}}</p>
+             <p>{{bom.style_name}}</p>
+        {% empty %}
+            <p>THIS COMPONENT IS NOT USED</p>
+        {% endfor %}
+        
+
     </div>
     <div>
         <a href="{% url 'component_update' component.id %}">Edit</a>
