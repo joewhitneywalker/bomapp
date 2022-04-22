@@ -16,7 +16,7 @@ class Component(models.Model):
     material_compostition = models.CharField(max_length=200)
     component_type = models.CharField(max_length=200, default='EX: BUTTON', editable=True) 
 
-def __str__(self):
+    def __str__(self):
         return self.name
 
 
@@ -34,9 +34,9 @@ class Bom(models.Model):
     component = models.ManyToManyField(Component)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-def __str__(self):
+    def __str__(self):
         return self.style_name
-class Meta:
+    class Meta:
         ordering = ['style_number']
 
 
