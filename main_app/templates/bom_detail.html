@@ -7,14 +7,22 @@
 </div>
     <h1>{{bom.style_number}}</h1>
     <h1>{{bom.style_name}}</h1>
+    <h1>{{bom.colorway}}</h1>
 </div>
 <div>
     <h3></h3>
     <h3></h3>
 </div>
 
-{% for component in bom.component_set.all %}
+{% for component in bom.component.all %}
     <div>{{component.name}}</div>
+    <div>{{component.article_code}}</div>
+    <div>{{component.supplier}}</div>
+    <div>{{component.quantity}}</div>
+    <div>{{component.usage}}</div>
+   
+
+    
 {% empty %}
     <div>THIS BOM IS MISSING COMPONENTS</div>
 {% endfor %}
