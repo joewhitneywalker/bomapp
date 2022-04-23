@@ -129,13 +129,6 @@ def login_view(request):
 
 
 
-
-
-
-
-
-
-
 def components_index(request):
     components = Component.objects.all()
     return render(request, 'component_index.html', {'components': components})
