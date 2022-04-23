@@ -12,7 +12,7 @@ class Component(models.Model):
     article_code = models.CharField(max_length=50) 
     quantity = models.CharField(max_length=3)
     supplier = models.CharField(max_length=50)
-    img = models.ImageField(null=True, blank=True, upload_to="media/", max_length=255) 
+    img = models.ImageField(null=True, blank=True, upload_to="images/", max_length=255) 
     cost = models.CharField(max_length=50)
     material_compostition = models.CharField(max_length=200)
     component_type = models.CharField(max_length=200, default='EX: BUTTON', editable=True) 
