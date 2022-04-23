@@ -135,7 +135,7 @@ def components_index(request):
 
 def components_show(request, component_id):
     component = Component.objects.get(id=component_id)
-    return render(request, 'component_show.html', {'component': component}) 
+    return render(request, 'components_show.html', {'component': component}) 
 
 class Component_Create(CreateView):
     model = Component

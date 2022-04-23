@@ -15,7 +15,10 @@
 </div>
 
 {% for component in bom.component.all %}
-    <div>{{component.name}}</div>
+    
+    <a href="{% url 'components_show' component.pk %}">
+        <div>{{component.name}}</div>
+    </a>
     <div>{{component.article_code}}</div>
     <div>{{component.supplier}}</div>
     <div>{{component.quantity}}</div>
