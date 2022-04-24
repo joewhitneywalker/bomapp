@@ -8,12 +8,13 @@ Bom List
 {% block content %}
 
 {% block content_header %}
-    <h3 style="text-transform: uppercase; margin-top: 20px; margin-bottom: 20px;">{{ user.username }}'S RECENT FILES:</h3>
+    <h3 style="text-transform: uppercase; margin: 20px;">{{ user.username }}'S RECENT FILES:</h3>
 {% endblock %}
 
-
-<h1>{{header}}</h1>
-<table class="table table-striped table-hover">
+<h3>{{header}}</h3>
+<hr>
+<div class="container-sm">
+<table class="table table-striped table-hover" style="margin-top:50px">
     <thead>
         <tr>
             <th>PREVIEW</th>
@@ -48,6 +49,7 @@ Bom List
         </tr>
     {% endfor %}
     </tbody>
+</div>
 
 {% endblock %}
 
