@@ -31,14 +31,16 @@ Bom List
         {% for bom in boms %}
         <tr>
             <td>{% if bom.img %}
-                <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_100/{{bom.img}}" alt="{{bom.style_name}}">
+                <a href="{% url 'bom_detail' bom.pk %}">
+                    <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_100/{{bom.img}}" alt="{{bom.style_name}}">
+                </a>
                 
             {% else %} 
                 <span class="text-muted">NO PREVIEW</span>   
             {% endif %}
             </td>
             <td>   
-                <a href="{% url 'bom_detail' bom.pk %}">{{bom.style_number}}</a> 
+                <a href="{% url 'bom_detail' bom.pk %}" style="font-weight: bold; color: #2C7D6F;">{{bom.style_number}}</a> 
             </td>
             <td>{{bom.style_name}} </td>
             <td>{{bom.season}} </td>
