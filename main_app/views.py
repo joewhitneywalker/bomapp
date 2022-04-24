@@ -35,13 +35,34 @@ class BomList(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         style_number = self.request.GET.get("style_number")
+        season = self.request.GET.get("season_search")
+        category = self.request.GET.get("category_search")
         if style_number != None:
             context["boms"] = Bom.objects.filter(style_number__icontains=style_number)
             context["header"] = f"Searching for {style_number}"
+            context['seasons'] =Bom.objects.values_list('season', flat=True).distinct()
+            context['categories'] =Bom.objects.values_list('category', flat=True).distinct()
         else:
             context["boms"] = Bom.objects.all()
+            context['seasons'] =Bom.objects.values_list('season', flat=True).distinct()
+            context['categories'] =Bom.objects.values_list('category', flat=True).distinct()
             context["header"] = "ALL BOMS"
+
+        if season != None:
+            context["boms"] = Bom.objects.filter(season__icontains=season)#filters name 
+        if category:
+            context["boms"] = Bom.objects.filter(category__icontains=category)#filters name 
+
         return context
+
+def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/boms')
+
+
+
 
 
 #BOM CREATE VIEW
