@@ -2,36 +2,149 @@
 
 {% block content %}
 
-<div>
-    <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_400/{{bom.img}}" alt="{{bom.style_name}}">
-</div>
-    <h1>{{bom.style_number}}</h1>
-    <h1>{{bom.style_name}}</h1>
-    <h1>{{bom.colorway}}</h1>
-</div>
-<div>
-    <h3></h3>
-    <h3></h3>
-</div>
-
-{% for component in bom.component.all %}
-    
-    <a href="{% url 'components_show' component.pk %}">
-        <div>{{component.name}}</div>
-    </a>
-    <div>{{component.article_code}}</div>
-    <div>{{component.supplier}}</div>
-    <div>{{component.quantity}}</div>
-    <div>{{component.usage}}</div>
-   
-
-    
-{% empty %}
-    <div>THIS BOM IS MISSING COMPONENTS</div>
-{% endfor %}
-<div>
-    <a href="{% url 'bom_update' bom.pk %}">UPDATE</a>
-    <a href="{% url 'bom_delete' bom.pk %}">DELETE</a>
-</div>
-
+{% block content_header %}
+    <h3 style="text-transform: uppercase; margin: 20px;">{{ bom.style_number }}   {{bom.style_name}}</h3>
 {% endblock %}
+<hr>
+
+<div class="container-sm">
+    <table class="table table-hover" style="margin-top: 50px;">
+        <thead>
+            <tr>
+              <th>COMPONENT</th>
+              <th>CODE</th>
+              <th>VENDOR</th>
+              <th>QUANTITY</th>
+              <th>PLACEMENT</th>
+              <th>         </th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th colspan="5" style="background-color: green; color: white;">FABRIC</th> 
+              <th colspan="7" style="background-color: green; color: white;">COLOR</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            {% for component in bom.component.all %}
+              <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
+              <td>{{component.article_code}}</td>
+              <td>{{component.supplier}}</td>
+              <td>{{component.quantity}}</td>
+              <td>{{component.usage}}</td>
+              <td>         </td>
+              <td>{{component.color}}</td>
+              
+            </tr>
+            {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                  <th colspan="7" style="background-color: green; color: white;">TRIMS</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for component in bom.component.all %}
+                  <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
+                  <td>{{component.article_code}}</td>
+                  <td>{{component.supplier}}</td>
+                  <td>{{component.quantity}}</td>
+                  <td>{{component.usage}}</td>
+                  <td>         </td>
+                  <td>{{component.color}}</td>
+                  
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                <th colspan="7" style="background-color: green; color: white;">LABELS</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for component in bom.component.all %}
+                <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
+                <td>{{component.article_code}}</td>
+                <td>{{component.supplier}}</td>
+                <td>{{component.quantity}}</td>
+                <td>{{component.usage}}</td>
+                <td>         </td>
+                <td>{{component.color}}</td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                <th colspan="7" style="background-color: green; color: white;">PACKAGING</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for component in bom.component.all %}
+                <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
+                <td>{{component.article_code}}</td>
+                <td>{{component.supplier}}</td>
+                <td>{{component.quantity}}</td>
+                <td>{{component.usage}}</td>
+                <td>         </td>
+                <td>{{component.color}}</td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+        </table>
+
+
+        <div>
+        <a href="{% url 'bom_update' bom.pk %}">UPDATE</a>
+        <a href="{% url 'bom_delete' bom.pk %}">DELETE</a>
+    </div>
+      </div>
+
+      
+      {% endblock %}
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
