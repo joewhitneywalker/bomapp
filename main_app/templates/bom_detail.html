@@ -7,7 +7,7 @@
 {% endblock %}
 <hr>
 
-<div class="container-sm">
+<div class="container-lg">
     <table class="table table-hover" style="margin-top: 50px;">
         <thead>
             <tr>
@@ -16,13 +16,13 @@
               <th>VENDOR</th>
               <th>QUANTITY</th>
               <th>PLACEMENT</th>
-              <th>         </th>
+              <th>COLOR</th>
+              <th></th>
             </tr>
           </thead>
           <thead>
             <tr>
-              <th colspan="5" style="background-color: green; color: white;">FABRIC</th> 
-              <th colspan="7" style="background-color: green; color: white;">COLOR</th> 
+              <th colspan="7" style="background-color: white; color: grey;">FABRIC</th> 
             </tr>
           </thead>
           <tbody>
@@ -31,30 +31,34 @@
               <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
               <td>{{component.article_code}}</td>
               <td>{{component.supplier}}</td>
-              <td> <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
-              <td id="usage">
+              <td>N/A</td>
+              <td id="placement"> 
+                <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
+              <td id="color">
                 <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)" type="text"> 
               </td>
-              <td>         </td>
-              <td id="color">
-                <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> 
-              </td></td>
-              
+              <td>
+                <form class>
+                  <a href="{% url 'component_delete' component.pk %}">
+                  <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">DELETE</button>
+                  </a>    
+              </form>
+              </td>
             </tr>
             {% endfor %}
             </tbody>
             <thead>
-                <tr>
-                  <th colspan="7" style="background-color: green; color: white;">TRIMS</th> 
-                </tr>
+              <tr>
+                <th colspan="7" style="background-color: white; color: grey;">TRIMS</th> 
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                {% for component in bom.component.all %}
-                  <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
-                  <td>{{component.article_code}}</td>
-                  <td>{{component.supplier}}</td>
-                  <td>
+              <tr>
+              {% for trim in bom.trim.all %}
+                <td><a href="{% url 'trims_show' trim.pk %}">{{trim.name}}</a></td>
+                <td>{{trim.article_code}}</td>
+                <td>{{trim.supplier}}</td>
+                <td>
                     <select id="quantity" class="form-select" aria-label="Default select example">
                       <option selected>     </option>
                       <option value="1">1</option>
@@ -67,81 +71,71 @@
                       <option value="3">8</option>
                       <option value="3">9</option>
                       <option value="3">10</option>
-                  </td>
-                  <td id="usage">
-                    <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)" type="text"> 
-                  </td>
-                  <td>         </td>
+                </td>
+                <td id="placement"> 
+                  <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
                   <td>
-                    <select id="quantity" class="form-select" aria-label="Default select example">
+                    <select id="quantity" class="form-select" aria-label="Default select example" style="max-width: 180px">
                       <option selected>     </option>
-                      <option value="{{component.colo}}">{{component.color}}</option>
-            
+                      <option value="1">{{trim.color}}</option>
+                </td>
+                <td>
+                  <form class>
+                    <a href="{% url 'trim_delete' trim.pk %}">
+                    <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">DELETE</button>
+                    </a>    
+                </form>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+              <thead>
+                <tr>
+                  <th colspan="7" style="background-color: white; color: grey;">LABELS</th> 
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                {% for label in bom.label.all %}
+                  <td><a href="{% url 'labels_show' label.pk %}">{{label.name}}</a></td>
+                  <td>{{label.article_code}}</td>
+                  <td>{{label.supplier}}</td>
+                  <td>
+                      <select id="quantity" class="form-select" aria-label="Default select example">
+                        <option selected>     </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                   </td>
-                  
+                  <td id="placement"> 
+                    <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
+                    <td>
+                      <select id="quantity" class="form-select" aria-label="Default select example" style="max-width: 180px">
+                        <option selected>     </option>
+                        <option value="1">{{label.color}}</option>
+                  </td>
+                  <td>
+                    <form class>
+                      <a href="{% url 'label_delete' label.pk %}">
+                      <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">DELETE</button>
+                      </a>    
+                  </form>
+                  </td>
                 </tr>
                 {% endfor %}
-            </tbody>
-            <thead>
-                <tr>
-                <th colspan="7" style="background-color: green; color: white;">LABELS</th> 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                {% for component in bom.component.all %}
-                <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
-                <td>{{component.article_code}}</td>
-                <td>{{component.supplier}}</td>
-                <td>{{component.quantity}}</td>
-                <td>{{component.usage}}</td>
-                <td>         </td>
-                <td>{{component.color}}</td>
-                
-                </tr>
-                {% endfor %}
-            </tbody>
-            <thead>
-                <tr>
-                <th colspan="7" style="background-color: green; color: white;">PACKAGING</th> 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                {% for component in bom.component.all %}
-                <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
-                <td>{{component.article_code}}</td>
-                <td>{{component.supplier}}</td>
-                <td>{{component.quantity}}</td>
-                <td>{{component.usage}}</td>
-                <td>         </td>
-                <td>{{component.color}}</td>
-                
-                </tr>
-                {% endfor %}
-            </tbody>
-            
-              
-
-
-
-
-
-
-
-
-
-
-
+              </tbody>
 
         </table>
 
 
-        <div>
-        <a href="{% url 'bom_update' bom.pk %}">UPDATE</a>
-        <a href="{% url 'bom_delete' bom.pk %}">DELETE</a>
-    </div>
+      <div>
+        <form class>
+            <a href="{% url 'bom_update' bom.pk %}">
+            <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">UPDATE BOM</button>
+            </a>    
+        </form>
       </div>
+
 
       
       {% endblock %}
