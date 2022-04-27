@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from .models import Bom, Component
+from .models import Bom, Component, Trim, Label
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse, reverse_lazy
@@ -99,6 +99,96 @@ class Bom_Delete(DeleteView):
     success_url = "/boms/"
 
 
+
+
+
+#COMPONENT LIST VIEW
+def components_index(request):
+    components = Component.objects.all()
+    return render(request, 'component_index.html', {'components': components})
+#COMPONENT DETAIL VIEW
+def components_show(request, component_id):
+    component = Component.objects.get(id=component_id)
+    return render(request, 'components_show.html', {'component': component}) 
+#COMPONENT CREATE VIEW
+class Component_Create(CreateView):
+    model = Component
+    fields = '__all__'
+    template_name = "component_create.html"
+    success_url = '/components'
+#COMPONENT UPDATE VIEW
+class Component_Update(UpdateView):
+    model = Component
+    fields = '__all__'
+    template_name = "component_update.html"
+    success_url = '/components'
+#COMPONENT DELETE VIEW
+class Component_Delete(DeleteView):
+    model = Component
+    template_name = "component_delete.html"
+    success_url = '/components'
+
+
+
+#TRIM LIST VIEW
+def trims_index(request):
+    trims = Trim.objects.all()
+    return render(request, 'trim_index.html', {'trims': trims})
+#TRIM DETAIL VIEW
+def trims_show(request, trim_id):
+    trim = Trim.objects.get(id=trim_id)
+    return render(request, 'trims_show.html', {'trim': trim}) 
+#TRIM CREATE VIEW
+class Trim_Create(CreateView):
+    model = Trim
+    fields = '__all__'
+    template_name = "trim_create.html"
+    success_url = '/trims'
+#TRIM UPDATE VIEW
+class Trim_Update(UpdateView):
+    model = Trim
+    fields = '__all__'
+    template_name = "trim_update.html"
+    success_url = '/trims'
+#TRIM DELETE VIEW
+class Trim_Delete(DeleteView):
+    model = Trim
+    template_name = "trim_delete.html"
+    success_url = '/trims'
+
+
+
+#LABEL LIST VIEW
+def labels_index(request):
+    labels = Label.objects.all()
+    return render(request, 'label_index.html', {'labels': labels})
+#LABEL DETAIL VIEW
+def labels_show(request, label_id):
+    label = Label.objects.get(id=label_id)
+    return render(request, 'labels_show.html', {'label': label}) 
+#TRIM CREATE VIEW
+class Label_Create(CreateView):
+    model = Label
+    fields = '__all__'
+    template_name = "label_create.html"
+    success_url = '/label'
+#TRIM UPDATE VIEW
+class Label_Update(UpdateView):
+    model = Label
+    fields = '__all__'
+    template_name = "label_update.html"
+    success_url = '/labels'
+#TRIM DELETE VIEW
+class Label_Delete(DeleteView):
+    model = Label
+    template_name = "label_delete.html"
+    success_url = '/labels'
+
+
+
+
+
+
 #USER FUNCION
 @login_required
 def profile(request, username):
@@ -147,30 +237,3 @@ def login_view(request):
     else:
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
-
-
-
-def components_index(request):
-    components = Component.objects.all()
-    return render(request, 'component_index.html', {'components': components})
-
-def components_show(request, component_id):
-    component = Component.objects.get(id=component_id)
-    return render(request, 'components_show.html', {'component': component}) 
-
-class Component_Create(CreateView):
-    model = Component
-    fields = '__all__'
-    template_name = "component_create.html"
-    success_url = '/components'
-
-class Component_Update(UpdateView):
-    model = Component
-    fields = '__all__'
-    template_name = "component_update.html"
-    success_url = '/components'
-
-class Component_Delete(DeleteView):
-    model = Component
-    template_name = "component_delete.html"
-    success_url = '/components'

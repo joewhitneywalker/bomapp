@@ -31,10 +31,14 @@
               <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
               <td>{{component.article_code}}</td>
               <td>{{component.supplier}}</td>
-              <td>{{component.quantity}}</td>
-              <td>{{component.usage}}</td>
+              <td> <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
+              <td id="usage">
+                <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)" type="text"> 
+              </td>
               <td>         </td>
-              <td>{{component.color}}</td>
+              <td id="color">
+                <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> 
+              </td></td>
               
             </tr>
             {% endfor %}
@@ -50,10 +54,30 @@
                   <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
                   <td>{{component.article_code}}</td>
                   <td>{{component.supplier}}</td>
-                  <td>{{component.quantity}}</td>
-                  <td>{{component.usage}}</td>
+                  <td>
+                    <select id="quantity" class="form-select" aria-label="Default select example">
+                      <option selected>     </option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="3">4</option>
+                      <option value="3">5</option>
+                      <option value="3">6</option>
+                      <option value="3">7</option>
+                      <option value="3">8</option>
+                      <option value="3">9</option>
+                      <option value="3">10</option>
+                  </td>
+                  <td id="usage">
+                    <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)" type="text"> 
+                  </td>
                   <td>         </td>
-                  <td>{{component.color}}</td>
+                  <td>
+                    <select id="quantity" class="form-select" aria-label="Default select example">
+                      <option selected>     </option>
+                      <option value="{{component.colo}}">{{component.color}}</option>
+            
+                  </td>
                   
                 </tr>
                 {% endfor %}
@@ -122,29 +146,3 @@
       
       {% endblock %}
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

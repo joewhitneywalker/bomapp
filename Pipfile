@@ -8,6 +8,7 @@ django = "*"
 django-cloudinary-storage = "*"
 pillow = "*"
 django-bootstrap-icons = "*"
+django-tables2 = "*"
 
 [dev-packages]
 
