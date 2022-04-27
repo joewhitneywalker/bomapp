@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>TRIM DETAILS</h1>
+
+<div>
+    <div>
+        <span>{{ trim.name }}</span>
+        <p>NAME: {{ trim.name }}</p>
+        <p>COLOR {{ trim.color }}</p>
+        <p>ARTICLE CODE: {{ trim.article_code }}</p>
+        <p>SUPPLIER: {{ trim.supplier }}</p>
+        <p>IMAGE:</p>
+        <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_400/{{trim.img}}" alt="{{trim.name}}">
+        <p>COST: {{ trim.cost }}</p>
+        <p>MATERIAL COMPOSITION: {{ trim.material_composition }}</p>
+        <p>BOMS WHERE THIS TRIM IS USED:</p>
+        {% for bom in trim.bom_set.all %}
+             <p>{{bom.style_number}}</p>
+             <p>{{bom.style_name}}</p>
+        {% empty %}
+            <p>THIS TRIM IS NOT USED</p>
+        {% endfor %}
+        
+
+    </div>
+    <div>
+        <a href="{% url 'trim_update' trim.id %}">EDIT</a>
+        <a href="{% url 'trim_delete' trim.id %}">DELETE</a>
+    </div>
+</div>
+{% endblock %}

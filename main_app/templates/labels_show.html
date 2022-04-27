@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>LABEL DETAILS</h1>
+
+<div>
+    <div>
+        <span>{{ label.name }}</span>
+        <p>NAME: {{ label.name }}</p>
+        <p>COLOR {{ label.color }}</p>
+        <p>ARTICLE CODE: {{ label.article_code }}</p>
+        <p>SUPPLIER: {{ label.supplier }}</p>
+        <p>IMAGE:</p>
+        <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_400/{{label.img}}" alt="{{label.name}}">
+        <p>COST: {{ label.cost }}</p>
+        <p>MATERIAL COMPOSITION: {{ label.material_composition }}</p>
+        <p>BOMS WHERE THIS TRIM IS USED:</p>
+        {% for bom in label.bom_set.all %}
+             <p>{{bom.style_number}}</p>
+             <p>{{bom.style_name}}</p>
+        {% empty %}
+            <p>THIS LABEL IS NOT USED</p>
+        {% endfor %}
+        
+
+    </div>
+    <div>
+        <a href="{% url 'label_update' label.id %}">EDIT</a>
+        <a href="{% url 'label_delete' label.id %}">DELETE</a>
+    </div>
+</div>
+{% endblock %}

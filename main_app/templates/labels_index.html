@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>LIST OF LABELS</h1>
+
+{% for label in labels %}
+    <div>
+        <a href="{% url 'labels_show' label.id %}">
+            <div class="card-content">
+                <span>{{ label.name }}</span> 
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}

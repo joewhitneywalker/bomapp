@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>DELETE COMPONENT</h1>
+    <h1>DELETE LABEL/h1>
 
-    <h4>ARE YOU SURE YOU WANT TO DELETE <strong>{{ component }}</strong>?</h4>
+    <h4>ARE YOU SURE YOU WANT TO DELETE <strong>{{ label }}</strong>?</h4>
 
     <form action="" method="POST">
         {% csrf_token %}
         <input type="submit" value="Yes - Delete!">
-        <a href="{% url 'components_show' component.id %}">CANCEL</a>
+        <a href="{% url 'labels_show' label.id %}">CANCEL</a>
     </form>
 {% endblock %}
