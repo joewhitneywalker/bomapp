@@ -105,7 +105,7 @@ class Bom_Delete(DeleteView):
 #COMPONENT LIST VIEW
 def components_index(request):
     components = Component.objects.all()
-    return render(request, 'component_index.html', {'components': components})
+    return render(request, 'components_index.html', {'components': components})
 #COMPONENT DETAIL VIEW
 def components_show(request, component_id):
     component = Component.objects.get(id=component_id)
@@ -133,7 +133,7 @@ class Component_Delete(DeleteView):
 #TRIM LIST VIEW
 def trims_index(request):
     trims = Trim.objects.all()
-    return render(request, 'trim_index.html', {'trims': trims})
+    return render(request, 'trims_index.html', {'trims': trims})
 #TRIM DETAIL VIEW
 def trims_show(request, trim_id):
     trim = Trim.objects.get(id=trim_id)
@@ -161,7 +161,7 @@ class Trim_Delete(DeleteView):
 #LABEL LIST VIEW
 def labels_index(request):
     labels = Label.objects.all()
-    return render(request, 'label_index.html', {'labels': labels})
+    return render(request, 'labels_index.html', {'labels': labels})
 #LABEL DETAIL VIEW
 def labels_show(request, label_id):
     label = Label.objects.get(id=label_id)
@@ -171,7 +171,7 @@ class Label_Create(CreateView):
     model = Label
     fields = '__all__'
     template_name = "label_create.html"
-    success_url = '/label'
+    success_url = '/labels'
 #TRIM UPDATE VIEW
 class Label_Update(UpdateView):
     model = Label
