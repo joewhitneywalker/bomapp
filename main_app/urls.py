@@ -33,6 +33,7 @@ urlpatterns = [
     path('labels/<int:pk>/update/', views.Label_Update.as_view(), name='label_update'),
     path('labels/<int:pk>/delete/', views.Label_Delete.as_view(), name='label_delete'),
     
+ 
     
 
 

@@ -8,6 +8,24 @@
 <hr>
 
 <div class="container-lg">
+  
+
+  <ul class="nav nav-tabs">
+    
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'bom_detail' bom.pk %}">BOM</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/">SKETCH</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/">GRAPHIC</a>
+    </li>
+  
+  </ul>
+
+
+  
     <table class="table table-hover" style="margin-top: 50px;">
         <thead>
             <tr>
@@ -32,17 +50,14 @@
               <td>{{component.article_code}}</td>
               <td>{{component.supplier}}</td>
               <td>N/A</td>
-              <td id="placement"> 
-                <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
-              <td id="color">
-                <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)" type="text"> 
-              </td>
+              <td style="max-width: 50px;">{{component.usage}}</td> 
+              <td>{{component.color}}</td> 
               <td>
-                <form class>
-                  <a href="{% url 'component_delete' component.pk %}">
-                  <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">DELETE</button>
-                  </a>    
-              </form>
+                <form class=>
+                  <a href="{% url 'component_update' component.id %}">
+                  <button class="btn btn-sm" style="color:white; background-color:#2C7D6F; font-weight: bold;" type="button">EDIT</button>
+                  </a>
+                </form>
               </td>
             </tr>
             {% endfor %}
@@ -58,33 +73,15 @@
                 <td><a href="{% url 'trims_show' trim.pk %}">{{trim.name}}</a></td>
                 <td>{{trim.article_code}}</td>
                 <td>{{trim.supplier}}</td>
+                <td>{{trim.quantity}}</td>
+                <td>{{trim.placment}}</td>
+                <td>{{trim.color}}</td>
                 <td>
-                    <select id="quantity" class="form-select" aria-label="Default select example">
-                      <option selected>     </option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="3">4</option>
-                      <option value="3">5</option>
-                      <option value="3">6</option>
-                      <option value="3">7</option>
-                      <option value="3">8</option>
-                      <option value="3">9</option>
-                      <option value="3">10</option>
-                </td>
-                <td id="placement"> 
-                  <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
-                  <td>
-                    <select id="quantity" class="form-select" aria-label="Default select example" style="max-width: 180px">
-                      <option selected>     </option>
-                      <option value="1">{{trim.color}}</option>
-                </td>
-                <td>
-                  <form class>
-                    <a href="{% url 'trim_delete' trim.pk %}">
-                    <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">DELETE</button>
-                    </a>    
-                </form>
+                  <form class=>
+                    <a href="{% url 'trim_update' trim.id %}">
+                    <button class="btn btn-sm" style="color:white; background-color:#2C7D6F; font-weight: bold;" type="button">EDIT</button>
+                    </a>  
+                  </form>
                 </td>
               </tr>
               {% endfor %}
@@ -100,31 +97,19 @@
                   <td><a href="{% url 'labels_show' label.pk %}">{{label.name}}</a></td>
                   <td>{{label.article_code}}</td>
                   <td>{{label.supplier}}</td>
+                  <td>{{label.quantity}}</td>
+                  <td style="max-width: 50px;">{{label.placement}}</td>
+                  <td>{{label.color}}</td>
                   <td>
-                      <select id="quantity" class="form-select" aria-label="Default select example">
-                        <option selected>     </option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                  </td>
-                  <td id="placement"> 
-                    <input style="min-height: 37px; border-radius: 5px; border-width: 1px; border-color: rgb(183, 183, 183)"type="text"> </td>
-                    <td>
-                      <select id="quantity" class="form-select" aria-label="Default select example" style="max-width: 180px">
-                        <option selected>     </option>
-                        <option value="1">{{label.color}}</option>
-                  </td>
-                  <td>
-                    <form class>
-                      <a href="{% url 'label_delete' label.pk %}">
-                      <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">DELETE</button>
-                      </a>    
-                  </form>
+                    <form class=>
+                      <a href="{% url 'label_update' label.id %}">
+                      <button class="btn btn-sm" style="color:white; background-color:#2C7D6F; font-weight: bold;" type="button">EDIT</button>
+                      </a>
+                    </form>
                   </td>
                 </tr>
                 {% endfor %}
               </tbody>
-
         </table>
 
 

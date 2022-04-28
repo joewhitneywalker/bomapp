@@ -121,8 +121,9 @@ class Component_Update(UpdateView):
     model = Component
     fields = '__all__'
     template_name = "component_update.html"
-    success_url = '/components'
-   
+    success_url = '/boms'
+    
+
 
 #COMPONENT DELETE VIEW
 class Component_Delete(DeleteView):
@@ -185,8 +186,6 @@ class Label_Delete(DeleteView):
     model = Label
     template_name = "label_delete.html"
     success_url = '/labels'
-
-
 
 
 

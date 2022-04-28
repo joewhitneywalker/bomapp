@@ -21,6 +21,22 @@ class Component(models.Model):#FABRIC MODEL
         return self.name
 
 
+
+
+
+QUANTITY_CHOICES = (
+    ('1', '1'), 
+    ('2', '2'), 
+    ('3', '3'),
+    ('4', '4'), 
+    ('5', '5'), 
+    ('6', '6'), 
+    ('7', '7'), 
+    ('8', '8'), 
+    ('9', '9'), 
+    ('10', '10'),   
+)
+
 class Trim(models.Model):#TRIM MODEL
 
     name = models.CharField(max_length=50, editable=True)
@@ -30,6 +46,8 @@ class Trim(models.Model):#TRIM MODEL
     img = models.ImageField(null=True, blank=True, upload_to="trims/", max_length=255) 
     cost = models.CharField(max_length=50, editable=True)
     material_compostition = models.CharField(max_length=200, editable=True)
+    quantity = models.CharField(max_length=10, choices=QUANTITY_CHOICES, editable=True, default='1')
+    placement = models.CharField(max_length=200, editable=True)
 
     def __str__(self):
         return self.name
@@ -43,6 +61,8 @@ class Label(models.Model):#LABEL MODEL
     img = models.ImageField(null=True, blank=True, upload_to="labels/", max_length=255) 
     cost = models.CharField(max_length=50, editable=True)
     material_compostition = models.CharField(max_length=200, editable=True)
+    quantity = models.CharField(max_length=200, editable=True)
+    placement = models.CharField(max_length=200, editable=True)
 
     def __str__(self):
         return self.name
@@ -62,6 +82,8 @@ class Bom(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     trim = models.ManyToManyField(Trim)
     label = models.ManyToManyField(Label)
+    sketch = models.ImageField(null=True, blank=True, upload_to="sketch/", max_length=255)
+    graphic = models.ImageField(null=True, blank=True, upload_to="graphic/", max_length=255)
 
     def __str__(self):
         return self.style_name
