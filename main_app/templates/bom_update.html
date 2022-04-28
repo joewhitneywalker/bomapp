@@ -3,7 +3,7 @@
 {% block content %}
 <h1>UPDATE {{bom.style_name}}</h1>
 
-<form action="" method="post">
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %} 
   {{form.as_p}} 
   <input type="submit" value="Submit" />

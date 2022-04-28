@@ -72,17 +72,30 @@ class Bom_Create(CreateView):
     template_name = "bom_create.html"
     def get_success_url(self):
         return reverse('bom_detail', kwargs={'pk': self.object.pk}) 
+        
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
+        self.object = form.save()
         self.object.user = self.request.user
         self.object.save()
+        #self.object.save_m2m()
         return HttpResponseRedirect('/boms') #update to be on boms detail page
 
 #BOM DETAIL VIEW - WILL BE A TABLE OF COMPONENTS 
 class Bom_Detail(DetailView):
     model =  Bom
     template_name = "bom_detail.html"
+
+#BOM SKETCH DETAIL
+class Bom_Sketch_Detail(DetailView):
+    model =  Bom
+    template_name = "bom_sketch_detail.html"
+
+#BOM GRAPHIC DETAIL
+class Bom_Graphic_Detail(DetailView):
+    model =  Bom
+    template_name = "bom_graphic_detail.html"
+
 
 #BOM UPDATE VIEW
 class Bom_Update(UpdateView):
@@ -96,7 +109,7 @@ class Bom_Update(UpdateView):
 class Bom_Delete(DeleteView):
     model = Bom
     template_name = "bom_delete.html"
-    success_url = "/boms/"
+    success_url = "/boms"
 
 
 

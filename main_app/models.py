@@ -83,7 +83,7 @@ class Bom(models.Model):
     trim = models.ManyToManyField(Trim)
     label = models.ManyToManyField(Label)
     sketch = models.ImageField(null=True, blank=True, upload_to="sketch/", max_length=255)
-    graphic = models.ImageField(null=True, blank=True, upload_to="graphic/", max_length=255)
+    
 
     def __str__(self):
         return self.style_name

@@ -10,6 +10,10 @@ urlpatterns = [
     path('boms/<int:pk>/update', views.Bom_Update.as_view(), name="bom_update"), 
     path('boms/<int:pk>delete', views.Bom_Delete.as_view(), name="bom_delete"),
 
+    path('boms/<int:pk>/sketch', views.Bom_Sketch_Detail.as_view(), name="bom_sketch_detail"),
+    path('boms/<int:pk>/graphic', views.Bom_Graphic_Detail.as_view(), name="bom_graphic_detail"),
+  
+
 
     path('user/<username>/', views.profile, name="profile"),
 
@@ -33,8 +37,7 @@ urlpatterns = [
     path('labels/<int:pk>/update/', views.Label_Update.as_view(), name='label_update'),
     path('labels/<int:pk>/delete/', views.Label_Delete.as_view(), name='label_delete'),
     
- 
-    
+   
 
 
     path('login/', views.login_view, name='login'),

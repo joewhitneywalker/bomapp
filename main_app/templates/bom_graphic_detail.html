@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+{% block content_header %}
+    <h3 style="text-transform: uppercase; margin: 20px;">{{ bom.style_number }}   {{bom.style_name}}</h3>
+{% endblock %}
+<hr>
+
+<div class="container-lg">
+  
+
+  <ul class="nav nav-tabs">
+    
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'bom_detail' bom.pk %}">BOM</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'bom_sketch_detail' bom.pk %}">SKETCH</a>
+    </li>
+    <!--CDN SCRIPT CSS CAN GO HERE-->
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'bom_graphic_detail' bom.pk %}">GRAPHIC</a>
+    </li>
+  
+  </ul>
+
+
+  <div class="container-sm">
+    <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_400/{{bom.graphic}}" alt="{{bom.style_name}}">
+    <hr>
+  </div>
+
+
+      <div>
+        <form class>
+            <a href="{% url 'bom_update' bom.pk %}">
+            <button class="btn btn-sm" style="color:white; background-color:#2C7D6F;" type="button">UPDATE BOM</button>
+            </a>    
+        </form>
+      </div>
+
+
+      
+      {% endblock %}
+        
