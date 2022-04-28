@@ -47,7 +47,6 @@ class BomList(TemplateView):
             context['seasons'] =Bom.objects.values_list('season', flat=True).distinct()
             context['categories'] =Bom.objects.values_list('category', flat=True).distinct()
             context["header"] = "ALL BOMS"
-
         if season != None:
             context["boms"] = Bom.objects.filter(season__icontains=season)#filters name 
         if category:
