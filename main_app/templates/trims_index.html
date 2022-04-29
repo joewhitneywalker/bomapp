@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>LIST OF TRIMS</h1>
-
-{% for trim in trims %}
+<div class="container-sm">
+    <hr>
+    <h3>LIST OF TRIMS</h3>
+    {% for trim in trims %}
     <div>
         <a href="{% url 'trims_show' trim.id %}">
             <div class="card-content">
-                <span>{{ trim.name }}</span> 
+                <span>{{ trim.name }}</span>
             </div>
         </a>
     </div>
 {% endfor %}
-
+<hr>
+</div>
 {% endblock %}
+
+
+
+
