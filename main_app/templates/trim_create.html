@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+<div class="container-sm">
+    <hr>
+    <h3>CREATE A TRIM</h3>
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="Submit!">
+        {% csrf_token %} 
+        {{ form|crispy }} 
+        <input class="crispy" type="submit" value="Submit"/>
     </form>
+    <hr>
+</div>
+
 {% endblock %}

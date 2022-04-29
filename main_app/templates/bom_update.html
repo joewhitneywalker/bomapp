@@ -1,12 +1,19 @@
+
 {% extends 'base.html' %} 
+{% load crispy_forms_tags %}
 
 {% block content %}
-<h1>UPDATE {{bom.style_name}}</h1>
-
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %} 
-  {{form.as_p}} 
-  <input type="submit" value="Submit" />
-</form>
+<div class="container-sm">
+	<hr>
+	<h3>UPDATE {{bom.style_name}}</h3>
+	
+	<form method="post" enctype="multipart/form-data">
+		  {% csrf_token %} 
+		  {{ form|crispy }} 
+		  <input class="crispy" type="submit" value="Submit"/>
+	</form>
+	<hr>
+</div>
+	
 
 {% endblock %}

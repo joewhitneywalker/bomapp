@@ -9,6 +9,7 @@ django-cloudinary-storage = "*"
 pillow = "*"
 django-bootstrap-icons = "*"
 django-tables2 = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
