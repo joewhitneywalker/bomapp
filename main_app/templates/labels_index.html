@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>LIST OF LABELS</h1>
-
-{% for label in labels %}
+<div class="container-sm">
+    <hr>
+    <h3>LIST OF LABELS</h3>
+    {% for label in labels %}
     <div>
         <a href="{% url 'labels_show' label.id %}">
             <div class="card-content">
-                <span>{{ label.name }}</span> 
+                <span>{{ label.name }}</span>
             </div>
         </a>
     </div>
 {% endfor %}
-
+<hr>
+</div>
 {% endblock %}
+
+
+
+
+

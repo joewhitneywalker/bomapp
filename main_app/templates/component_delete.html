@@ -1,13 +1,21 @@
-{% extends 'base.html' %}
+
+{% extends 'base.html' %} 
 
 {% block content %}
-    <h1>DELETE COMPONENT</h1>
-
-    <h4>ARE YOU SURE YOU WANT TO DELETE <strong>{{ component }}</strong>?</h4>
-
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Yes - Delete!">
-        <a href="{% url 'components_show' component.id %}">CANCEL</a>
+<div class="container-sm">
+  <P>ARE YOU SURE YOU WANT TO DELETE {{component.name}}?</p>
+    <form method="post">
+      {% csrf_token %}
+      <div>
+       <!-- confirm delete -->
+        <input type="submit" value="Confirm" class="btn btn-sm" style="color:white; background-color:#2C7D6F; font-weight: bold; text-transform: uppercase;"/>
+        <!-- Redirect back to detail on cancel -->
+        <a class="btn btn-sm" href="{% url 'components_show' component.id %}" role="button" style="color:white; background-color:#2C7D6F; font-weight: bold;">CANCEL</a>
+      </div>
     </form>
+
+</div>
+
 {% endblock %}
+
+

@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>LIST OF COMPONENTS</h1>
-
-{% for component in components %}
+<div class="container-sm">
+    <hr>
+    <h3>LIST OF COMPONENTS</h3>
+    {% for component in components %}
     <div>
         <a href="{% url 'components_show' component.id %}">
             <div class="card-content">
@@ -12,5 +13,11 @@
         </a>
     </div>
 {% endfor %}
-
+<hr>
+</div>
 {% endblock %}
+
+
+
+
+
