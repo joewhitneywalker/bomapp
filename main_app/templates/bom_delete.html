@@ -1,14 +1,20 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<h1>ARE YOU SURE YOU WANT TO DELETE {{bom.style_name}}?</h1>
-<form method="post">
-  {% csrf_token %}
-  <div>
-   <!-- confirm cat delete -->
-    <input type="submit" value="Confirm" />
-    <!-- Redirect back to detail on cancel -->
-    <a href="{% url 'bom_detail' bom.pk %}">CANCEL</a>
-  </div>
-</form>
+<div class="container-sm">
+  <P>ARE YOU SURE YOU WANT TO DELETE {{bom.style_name}}?</p>
+    <form method="post">
+      {% csrf_token %}
+      <div>
+       <!-- confirm delete -->
+        <input type="submit" value="Confirm" class="btn btn-sm" style="color:white; background-color:#2C7D6F; font-weight: bold; text-transform: uppercase;"/>
+        <!-- Redirect back to detail on cancel -->
+        <a class="btn btn-sm" href="{% url 'bom_detail' bom.pk %}" role="button" style="color:white; background-color:#2C7D6F; font-weight: bold;">CANCEL</a>
+      </div>
+    </form>
+
+</div>
+
 {% endblock %}
+
+

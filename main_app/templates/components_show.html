@@ -1,36 +1,30 @@
-
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>COMPONENT DETAILS</h1>
-
-<div>
-    <div>
-        <span>{{ component.name }}</span>
-        <p>NAME: {{ component.name }}</p>
-        <p>USAGE: {{ component.usage }}</p>
-        <p>COLOR {{ component.color }}</p>
-        <p>ARTICLE CODE: {{ component.article_code }}</p>
-        <p>QUANTITY: {{ component.quantity }}</p>
-        <p>SUPPLIER: {{ component.supplier }}</p>
-        <p>IMAGE:</p>
-        <img src = "https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_400/{{component.img}}" alt="{{component.name}}">
-        <p>COST: {{ component.cost }}</p>
-        <p>MATERIAL COMPOSITION: {{ component.material_composition }}</p>
-        <p>COMPONENT TYPE: {{ component.component_type }}</p>
-        <p>BOMS WHERE THIS COMPONENT IS USED:</p>
-        {% for bom in component.bom_set.all %}
-             <p>{{bom.style_number}}</p>
-             <p>{{bom.style_name}}</p>
-        {% empty %}
-            <p>THIS COMPONENT IS NOT USED</p>
-        {% endfor %}
-        
-
-    </div>
-    <div>
-        <a href="{% url 'component_update' component.id %}">Edit</a>
-        <a href="{% url 'component_delete' component.id %}">Delete</a>
-    </div>
+<div class="container-sm">
+    <hr>
+    <h3>COMPONENT DETAILS</h3>
+        <div class="card" style="width:25rem;">
+            <img src="https://res.cloudinary.com/drpm12cy1/image/upload/c_scale,h_200/{{component.img}}" class="card-img-top" alt="{{component.name}}">
+            <div class="card-body">
+                <p>NAME: {{ component.name }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">USAGE: {{ component.usage }}</li>
+                <li class="list-group-item">COLOR: {{ component.color }}</li>
+                <li class="list-group-item">ARTICLE CODE: {{ component.article_code }}</li>
+                <li class="list-group-item">SUPPLIER: {{ component.supplier }}</li>
+                <li class="list-group-item">COST: {{ component.cost }}</li>
+                <li class="list-group-item">MATERIAL COMPOSITION: {{ component.material_composition }}</li>
+            </ul>
+            <div class="card-body">
+                <a class="btn btn-sm" href="{% url 'component_update' component.pk %}" role="button" style="color:white; background-color:#2C7D6F; font-weight: bold;">UPDATE</a>
+                <a class="btn btn-sm" href="{% url 'component_delete' component.pk %}" role="button" style="color:white; background-color:#2C7D6F; font-weight: bold;">DELETE</a>
+            </div>
+        </div> 
+        <hr>    
 </div>
+
 {% endblock %}
+
+
