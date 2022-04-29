@@ -14,7 +14,7 @@ class Component(models.Model):#FABRIC MODEL
     supplier = models.CharField(max_length=50, editable=True)
     img = models.ImageField(null=True, blank=True, upload_to="components/", max_length=255) 
     cost = models.CharField(max_length=50, editable=True)
-    material_compostition = models.CharField(max_length=200, editable=True)
+    material_composition = models.CharField(max_length=200, editable=True)
     component_type = models.CharField(max_length=200, default='EX: BUTTON', editable=True) 
 
     def __str__(self):
@@ -45,7 +45,7 @@ class Trim(models.Model):#TRIM MODEL
     supplier = models.CharField(max_length=50, editable=True)
     img = models.ImageField(null=True, blank=True, upload_to="trims/", max_length=255) 
     cost = models.CharField(max_length=50, editable=True)
-    material_compostition = models.CharField(max_length=200, editable=True)
+    material_composition = models.CharField(max_length=200, editable=True)
     quantity = models.CharField(max_length=10, choices=QUANTITY_CHOICES, editable=True, default='1')
     placement = models.CharField(max_length=200, editable=True)
 
@@ -60,7 +60,7 @@ class Label(models.Model):#LABEL MODEL
     supplier = models.CharField(max_length=50, editable=True)
     img = models.ImageField(null=True, blank=True, upload_to="labels/", max_length=255) 
     cost = models.CharField(max_length=50, editable=True)
-    material_compostition = models.CharField(max_length=200, editable=True)
+    material_composition = models.CharField(max_length=200, editable=True)
     quantity = models.CharField(max_length=200, editable=True)
     placement = models.CharField(max_length=200, editable=True)
 

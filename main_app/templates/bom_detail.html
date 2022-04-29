@@ -13,10 +13,10 @@
   <ul class="nav nav-tabs">
     
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'bom_detail' bom.pk %}">BOM</a>
+      <a class="nav-link" href="{% url 'bom_detail' bom.pk %}" style="font-weight: bold; color: #2C7D6F;">BOM</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'bom_sketch_detail' bom.pk %}">SKETCH</a>
+      <a class="nav-link" href="{% url 'bom_sketch_detail' bom.pk %}" style="font-weight: bold; color: #2C7D6F;">SKETCH</a>
     </li>
   </ul>
 
@@ -42,7 +42,7 @@
           <tbody>
             <tr>
             {% for component in bom.component.all %}
-              <td><a href="{% url 'components_show' component.pk %}">{{component.name}}</a></td>
+              <td><a href="{% url 'components_show' component.pk %}" style="font-weight: bold; color: black;" >{{component.name}}</a></td>
               <td>{{component.article_code}}</td>
               <td>{{component.supplier}}</td>
               <td>N/A</td>
@@ -66,7 +66,7 @@
             <tbody>
               <tr>
               {% for trim in bom.trim.all %}
-                <td><a href="{% url 'trims_show' trim.pk %}">{{trim.name}}</a></td>
+                <td><a href="{% url 'trims_show' trim.pk %}" style="font-weight: bold; color: black;">{{trim.name}}</a></td>
                 <td>{{trim.article_code}}</td>
                 <td>{{trim.supplier}}</td>
                 <td>{{trim.quantity}}</td>
@@ -90,7 +90,7 @@
               <tbody>
                 <tr>
                 {% for label in bom.label.all %}
-                  <td><a href="{% url 'labels_show' label.pk %}">{{label.name}}</a></td>
+                  <td><a href="{% url 'labels_show' label.pk %}" style="font-weight: bold; color: black;">{{label.name}}</a></td>
                   <td>{{label.article_code}}</td>
                   <td>{{label.supplier}}</td>
                   <td>{{label.quantity}}</td>

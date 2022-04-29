@@ -1,8 +1,6 @@
 {% load static %}
 {% load cloudinary %}
 {% load bootstrap_icons %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +29,29 @@
           <a class="nav-link" style="color: white;" href="/boms"> {% bs_icon 'grid' color='white' %} ALL BOMS</a>
           <a class="nav-link" style="color: white;"href="/boms"> {% bs_icon 'search' color='white' %} SEARCH</a>
           <a class="nav-link" style="color: white;"href="/boms/new">{% bs_icon 'plus-lg' color='white' %} CREATE NEW BOM</a>
-          <a class="nav-link" style="color: white;" href="/"> {% bs_icon 'box-arrow-right' color='white' %} SIGNOUT</a>
-          <a class="nav-link" style="color: white;"href="/admin">{% bs_icon 'person-fill' color='white' %} ADMIN</a>
-          
         </div>
       </div>
+
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" style="color: white;"href="/admin">{% bs_icon 'person-fill' color='white' %} ADMIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white;" href="/login"> {% bs_icon 'box-arrow-right' color='white' %} LOG IN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white;" href="/login"> {% bs_icon 'box-arrow-right' color='white' %} LOG OUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white;" href="/signup"> {% bs_icon 'box-arrow-right' color='white' %} SIGN UP</a>
+        </li>
+      </ul>
+
+      
+      
+      
+      
+     
     </div>
 
     
@@ -45,4 +61,3 @@
 
   {% endblock %}
 </body>
-</html>
