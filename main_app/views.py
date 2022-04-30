@@ -39,7 +39,7 @@ class BomList(TemplateView):
         category = self.request.GET.get("category_search")
         if style_number != None:
             context["boms"] = Bom.objects.filter(style_number__icontains=style_number)
-            context["header"] = f"Searching for {style_number}"
+            context["header"] = f"{style_number}"
             context['seasons'] =Bom.objects.values_list('season', flat=True).distinct()
             context['categories'] =Bom.objects.values_list('category', flat=True).distinct()
         else:

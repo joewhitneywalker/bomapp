@@ -9,73 +9,20 @@ Bom List
 
 {% block content %}
 
-<header>
-    <div class="container-fluid" style="background-color:#393535; margin-bottom: 20px; height: 75px;">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-stagrt">
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-5 justify-content-center mb-md-0">
-            <li><a href="/" class="nav-link px-2 link-secondary " style="color: black; font-weight: bold; ;"></a></li>
-          </ul>
-          
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-5 justify-content-left mb-md-0">
-            <label for="season" style="font-size: 18px"></label>
-            <form>
-                 <select name="season_search" style="min-height: 30px; border:none; margin-top: 20px; background-color:#393535; color: white; margin-right: 5px;">
-                    <option value="empty">SEASON</option>
-                 {% for season in seasons %}
-                 {% if season %}
-                 <option value="{{season}}">{{season}}</option>
-                 {% else %}
-                 <p>NO SEASON AVAILABLE</p>
-                 {% endif %}
-                 {% empty %}
-                 <p>NO SEASON AVAILABLE</p>
-                 {% endfor %}
-                 <input type="submit"  value="FILTER" style="color:white; background:#2C7D6F; border-radius: 5px; border: 1px solid #2C7D6F; min-height: 30px;"></input>
-                 </select>    
-             </form>
-            </ul>
 
-
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-5 justify-content-center mb-md-0">
-            <label for="category"></label>
-            <form>
-                 <select name="category_search" style="min-height: 30px; border:none; margin-top: 20px; background-color:#393535; color: white; margin-right: 5px;">
-                    <option value="empty">CATEGORY</option>
-                 {% for category in categories %}
-                 {% if category %}
-                 <option value="{{category}}">{{category}}</option>
-                 {% else %}
-                 <p>NO CATEGORY AVAILABLE</p>
-                 {% endif %}
-                 {% empty %}
-                 <p>NO CATEGORY AVAILABLE</p>
-                 {% endfor %}
-                 <input type="submit"  value="FILTER" style="color:white; background:#2C7D6F; border-radius: 5px; border: 1px solid #2C7D6F; min-height: 30px;"></input>
-                 </select>
-                
-             </form>
-            </ul>
-
-
-          <form>
-          <div class="d-flex flex-wrap align-items-center justify-content-center container-fluid">
-            <input type="text" name="style_number" style="border-radius: 5px; ; margin-top: 20px; min-height: 30px; margin-right: 5px;" placeholder=" SEARCH"/>
-                    <input type="submit" value="ENTER" style="color:white; background:#2C7D6F; min-height: 50px; border-radius: 5px; border: 1px solid #2C7D6F; min-height: 30px; margin-top: 20px; margin-right: 100px;" ><a href="{% url 'bom_list' %}"></a>   
-          </form>   
-
-        </div>
-        
-      </div>
-     
-    </header>
  
 
 <h1 style="text-transform: uppercase; margin: 20px;">{{header}}</h1>
 <hr>
 
 <div class="container-sm">
+  
+
+  <form style="justify-content: flex-end">
+    <div class="d-flex flex-wrap  justify-content-end container-fluid">
+      <input type="text" name="style_number" style="border-radius: 5px; ; margin-top: 20px; min-height: 30px; margin-right: 5px; justify-content: end; " placeholder=" SEARCH"/>
+              <input type="submit" value="ENTER" style="color:white; background:#2C7D6F; min-height: 50px; border-radius: 5px; border: 1px solid #2C7D6F; min-height: 30px; margin-top: 20px; margin-right: 100px;" ><a href="{% url 'bom_list' %}"></a>   
+    </form> 
 
   <table class="table table-striped table-hover" style="margin-top:50px">
     <thead>
