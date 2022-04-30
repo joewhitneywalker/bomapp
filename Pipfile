@@ -10,6 +10,12 @@ pillow = "*"
 django-bootstrap-icons = "*"
 django-tables2 = "*"
 django-crispy-forms = "*"
+gunicorn = "*"
+django-heroku = "*"
+django-cors-headers = "*"
+dj-database-url = "*"
+psycopg2 = "*"
+whitenoise = "*"
 
 [dev-packages]
 
