@@ -8,7 +8,7 @@ LINKS:
 ***
 * [GITHUB REPO](https://github.com/joewhitneywalker/bomapp.git)
 
-* [HEROKU]COMING SOON!
+* [HEROKU](https://jwbomapp.herokuapp.com/)
 
 * [LINKEDIN](https://www.linkedin.com/in/joe-w-walker/)
 
