@@ -1,7 +1,7 @@
 # bomapp 🧾
 
 ------------------------------
-**bomapp is a web based BOM (Bill Of Materials) application. This application is used to manage singular components that make up physical products. Each physical product designer lists components into their BOM shell and assign article codes, colors, and quantities to each component. This is then passed off to a factory of a reciept and instruction manual that lists each component needed for the said physical product.**
+**bomapp is a web based BOM (Bill Of Materials) application. This is a simple application that is used to outline the make up of physical products (such as clothing) including fabrics, trims and labels. Each designer is responsible for creating BOMs to hand off to vendors that need to communicate how what is being used, the color, the quantity and placement. Additionally, this application has visual references for the designer's sketch, the fabric, trim and material to increase BOM accuracy. Each style is searchable by it's style number and each BOM and component in the BOM can be easily updated.**
 ----------------------------------
 
 LINKS:
